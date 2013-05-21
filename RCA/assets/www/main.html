@@ -11,40 +11,8 @@
 
 	</head>
 	<body>
-		<!--
-		  <button id="getp">Get Iframe Width</button>
-		<button id="getd">Get Document Width</button>
-		<button id="getw">Get Window Width</button>
-		<div>&nbsp;</div>
-		-->
-		<button id="photo">Photo</button>
-		
-		<iframe name="rcaframe" id="rcaframe"
-					sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-					src="http://cr-ca.ktp-concept.com" 
-					style="border: 0; width:100%; height:1024px;"></iframe>
-					
-		<script> 
-			function showWidth(ele, w) {
-				$("div").text("The width for the " + ele +	" is " + w + "px.");
-			}
-			$("#getp").click(function () {
-				showWidth("iframe", $("iframe").height());
-			});
-			$("#getd").click(function () {
-				showWidth("document", $(document).height());
-			});
-			$("#getw").click(function () {
-				showWidth("window", $(window).height());
-			});
+	<p id="logosite">azerty</p>  
+
 			
-			
-			var myIframe = $(document.frames['rcaframe']);
-			
-			myIframe.attr("width", $(window).width());
-			//myIframe.attr("height", $(window).height());
-			
-			
-		</script>
 	</body>
 </html>

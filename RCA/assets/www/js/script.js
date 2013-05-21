@@ -1,5 +1,3 @@
- var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value 
 
     // Wait for Cordova to connect with the device
     //
@@ -8,9 +6,60 @@
     // Cordova is ready to be used!
     //
     function onDeviceReady() {
-        pictureSource=navigator.camera.PictureSourceType;
-        destinationType=navigator.camera.DestinationType;
+    	// Now safe to use the Codova API
+    	
+    	var networkState = checkConnection();
+    	//navigator.notification.alert(networkState);
+    	 if (networkState == Connection.NONE) {
+             //window.location="local/index.html";
+    		 navigator.notification.alert('This app requires an internet connection');
+         } else {
+        	 window.location="http://cr-ca.ktp-concept.com";
+        	 
+         }
+    	
+    	 //InAppBorwser
+    	 //
+    /*	
+    	var ref = window.open('http://cr-ca.ktp-concept.com', '_blank', 'location=yes');
+         ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+         ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
+         ref.addEventListener('exit', function() { alert(event.type); });
+        */
+    	 
+    	 
+    	 //CAMERA
+    	 //
+    	 pictureSource=navigator.camera.PictureSourceType;
+         destinationType=navigator.camera.DestinationType;
+    	 
     }
+    
+    function alertM(message){
+    	
+    	 navigator.notification.alert(message);
+    }
+    
+    function checkConnection() {
+        var networkState = navigator.network.connection.type;
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.NONE]     = 'No network connection';
+       
+        return networkState;
+      
+    }
+    
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
+
+   
+       
 
     // Called when a photo is successfully retrieved
     //
@@ -41,6 +90,7 @@
       // Get image handle
       //
       var largeImage = document.getElementById('largeImage');
+      var largeImage = document.getElementById('smallImage');
 
       // Unhide image elements
       //
@@ -82,3 +132,11 @@
     function onFail(message) {
       alert('Failed because: ' + message);
     }
+    
+    
+    
+    $('.menu-toggle').click(function(){
+    	alertM("click");
+    	//getPhoto(pictureSource.PHOTOLIBRARY); //From Photo Library
+    });
+

@@ -24,21 +24,30 @@
 			//jQuery.noConflict();
 			console.log($("#deviceProperties").html())
 			
-		    //here you have the control over the body of the iframe document
-		    var iBody = $("#rcaframe").contents().find("body");
-			console.log(iBody.attr("id"))
+			$('#rcaframe').load(function(){
+		        
+		        console.log('iframe loaded')
+		        
+		        //here you have the control over the body of the iframe document
+			    var iBody = $("#rcaframe").contents().find("body");
+				console.log(iBody.attr("id"))
+			    
+			    //var unEl = iBody.find("#deviceProperties2")
+			    //console.log(unEl.html())
+			     var unEl = iBody.find("#bt_add_photos")
+			    console.log(unEl.attr('alt'))
+			    
+			     var unEl2 = iBody.find("#smallImage")
+			    console.log(unEl2.attr('style'))
+			    
+			    
+			    unEl.click(function() {
+	    	    	getPhoto(pictureSource.PHOTOLIBRARY); //From Photo Library
+	    	    });
+		    });
+			
+			
 		    
-		    //var unEl = iBody.find("#deviceProperties2")
-		    //console.log(unEl.html())
-		     var unEl = iBody.find("#bt_add_photos")
-		    
-		     var unEl2 = iBody.find("#smallImage")
-		    console.log(unEl2.attr('style'))
-		    
-		    
-		    unEl.click(function() {
-    	    	getPhoto(pictureSource.PHOTOLIBRARY); //From Photo Library
-    	    });
 		
 		});
 	</script>

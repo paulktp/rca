@@ -14,9 +14,19 @@
              //window.location="local/index.html";
     		 navigator.notification.alert('This app requires an internet connection');
          } else {
-        	 window.location="http://cr-ca.ktp-concept.com";
+        	// window.location="http://cr-ca.ktp-concept.com/test.html";
         	 
          }
+    	 /*    	 
+    	 var element = document.getElementById('deviceProperties');
+
+         element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
+                             'Device Cordova: '  + device.cordova + '<br />' + 
+                             'Device Platform: ' + device.platform + '<br />' + 
+                             'Device UUID: '     + device.uuid     + '<br />' + 
+                             'Device Model: '    + device.model     + '<br />' + 
+                             'Device Version: '  + device.version  + '<br />';
+*/
     	
     	 //InAppBorwser
     	 //
@@ -34,7 +44,7 @@
          destinationType=navigator.camera.DestinationType;
     	 
     }
-    
+  
     function alertM(message){
     	
     	 navigator.notification.alert(message);
@@ -79,19 +89,28 @@
       // The inline CSS rules are used to resize the image
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;
+      
     }
 
     // Called when a photo is successfully retrieved
     //
     function onPhotoURISuccess(imageURI) {
       // Uncomment to view the image file URI 
-      // console.log(imageURI);
+      console.log('imageURI : ' + imageURI);
 
       // Get image handle
       //
       var largeImage = document.getElementById('largeImage');
       var largeImage = document.getElementById('smallImage');
-
+      
+      var f=  window.frames['rcaframe'];
+      
+      var largeImage = f.document.getElementById('smallImage');
+      var button = f.document.getElementById('sendphoto');
+            
+      button.style.display = 'block';
+      button.onclick = function() { uploadPhoto(imageURI) };
+      
       // Unhide image elements
       //
       largeImage.style.display = 'block';
@@ -134,9 +153,38 @@
     }
     
     
+    // Called when a photo is successfully retrieved
+    //
+    function uploadPhoto(imageURI) {
+    	
+    	console.log('imageURI : ' + imageURI);
+    	
+    	var options = new FileUploadOptions();
+    	options.fileKey="file";
+    	options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+    	options.mimeType="image/jpeg";
+    	var params = new Object();
+    	params.value1 = "test";
+    	params.value2 = "param";
+    	options.params = params;
+    	options.chunkedMode = false;
+    	var ft = new FileTransfer();
+    	ft.upload(imageURI, "http://cr-ca.ktp-concept.com/reception.php", win, fail, options);
+    }
     
-    $('.menu-toggle').click(function(){
-    	alertM("click");
-    	//getPhoto(pictureSource.PHOTOLIBRARY); //From Photo Library
-    });
+    function win(r) {
+    	console.log("Code = " + r.responseCode);
+    	console.log("Response = " + r.response);
+    	console.log("Sent = " + r.bytesSent);
+    	alert(r.response);
+    }
+    
+    function fail(error) {
+    	alert("An error has occurred: Code = " = error.code);
+    	console.log("upload error source " + error.source);
+        console.log("upload error target " + error.target);
+
+    }
+    
+   
 

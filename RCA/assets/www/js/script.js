@@ -12,46 +12,36 @@
     	//navigator.notification.alert(networkState);
     	 if (networkState == Connection.NONE) {
              //window.location="local/index.html";
-    		 navigator.notification.alert('This app requires an internet connection');
+    		 navigator.notification.alert('Cette application requiere une connexion internet.');
          } else {
         	// window.location="http://cr-ca.ktp-concept.com/test.html";
         	 
          }
-    	 /*    	 
-    	 var element = document.getElementById('deviceProperties');
-
-         element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
-                             'Device Cordova: '  + device.cordova + '<br />' + 
-                             'Device Platform: ' + device.platform + '<br />' + 
-                             'Device UUID: '     + device.uuid     + '<br />' + 
-                             'Device Model: '    + device.model     + '<br />' + 
-                             'Device Version: '  + device.version  + '<br />';
-*/
-    	
-    	 //InAppBorwser
-    	 //
-    /*	
-    	var ref = window.open('http://cr-ca.ktp-concept.com', '_blank', 'location=yes');
-         ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
-         ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
-         ref.addEventListener('exit', function() { alert(event.type); });
-        */
-    	 
+       	 
     	 
     	 //CAMERA
     	 //
     	 pictureSource=navigator.camera.PictureSourceType;
          destinationType=navigator.camera.DestinationType;
+         
+         id_post = 0;
+         
+         setTimeout(function() {
+        	    navigator.splashscreen.hide();
+        	}, 2000);
+
     	 
     }
-  
-    function alertM(message){
+    
+    function alertDismissed(){
     	
-    	 navigator.notification.alert(message);
+    
     }
+  
     
     function checkConnection() {
-        var networkState = navigator.network.connection.type;
+        var networkState = navigator.connection.type;
+
         var states = {};
         states[Connection.UNKNOWN]  = 'Unknown connection';
         states[Connection.ETHERNET] = 'Ethernet connection';
@@ -59,7 +49,9 @@
         states[Connection.CELL_2G]  = 'Cell 2G connection';
         states[Connection.CELL_3G]  = 'Cell 3G connection';
         states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.CELL]     = 'Cell generic connection';
         states[Connection.NONE]     = 'No network connection';
+
        
         return networkState;
       
@@ -67,7 +59,8 @@
     
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value 
-
+    
+    var id_post;		//the post id for media
    
        
 
@@ -139,7 +132,8 @@
 
     // A button will call this function
     //
-    function getPhoto(source) {
+    function getPhoto(source,post_id) {
+    	id_post = post_id;
       // Retrieve image file location from specified source
       navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
         destinationType: destinationType.FILE_URI,
@@ -149,7 +143,7 @@
     // Called if something bad happens.
     // 
     function onFail(message) {
-      alert('Failed because: ' + message);
+    	navigator.notification.alert('Failed because: ' + message);
     }
     
     
@@ -158,14 +152,15 @@
     function uploadPhoto(imageURI) {
     	
     	console.log('imageURI : ' + imageURI);
+    	console.log('id_post_' + id_post);
     	
     	var options = new FileUploadOptions();
     	options.fileKey="file";
     	options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
     	options.mimeType="image/jpeg";
     	var params = new Object();
-    	params.value1 = "test";
-    	params.value2 = "param";
+    	params.id_post = id_post;
+    	//params.value2 = "param";
     	options.params = params;
     	options.chunkedMode = false;
     	var ft = new FileTransfer();
@@ -176,14 +171,15 @@
     	console.log("Code = " + r.responseCode);
     	console.log("Response = " + r.response);
     	console.log("Sent = " + r.bytesSent);
-    	alert(r.response);
+    	//alert(r.response);
+    	navigator.notification.alert("Media correctement envoye !","Message");
     }
     
     function fail(error) {
-    	alert("An error has occurred: Code = " = error.code);
+    	//alert("An error has occurred: Code = " = error.code);
     	console.log("upload error source " + error.source);
         console.log("upload error target " + error.target);
-
+        navigator.notification.alert("An error has occurred: Code = " = error.code);
     }
     
    

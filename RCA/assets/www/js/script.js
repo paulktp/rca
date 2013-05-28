@@ -172,7 +172,7 @@
     	console.log("Response = " + r.response);
     	console.log("Sent = " + r.bytesSent);
     	//alert(r.response);
-    	navigator.notification.alert("Media correctement envoye !","Message");
+    	navigator.notification.alert("Media correctement envoye !",alertDismissed,"Message");
     }
     
     function fail(error) {

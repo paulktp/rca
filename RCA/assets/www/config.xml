@@ -19,7 +19,7 @@
     </author>
     <preference name="phonegap-version" value="2.7.0" />
     <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="auto-hide-splash-screen" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="exit-on-suspend" value="true" />
     

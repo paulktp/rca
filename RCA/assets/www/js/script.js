@@ -12,7 +12,7 @@
     	//navigator.notification.alert(networkState);
     	 if (networkState == Connection.NONE) {
              //window.location="local/index.html";
-    		 navigator.notification.alert('Cette application requiere une connexion internet.');
+    		 navigator.notification.alert('L\'application RCA Jeunes requiere une connexion internet.');
          } else {
         	// window.location="http://cr-ca.ktp-concept.com/test.html";
         	 
@@ -25,11 +25,8 @@
          destinationType=navigator.camera.DestinationType;
          
          id_post = 0;
-         
-         setTimeout(function() {
-        	    navigator.splashscreen.hide();
-        	}, 2000);
-
+         f =  window.frames['rcaframe'];
+         url_Upload = "http://cr-ca.ktp-concept.com/reception.php";
     	 
     }
     
@@ -61,8 +58,8 @@
     var destinationType; // sets the format of returned value 
     
     var id_post;		//the post id for media
-   
-       
+    var f;				//iframe frame
+    var url_Upload;		//url to upload script   
 
     // Called when a photo is successfully retrieved
     //
@@ -91,27 +88,16 @@
       // Uncomment to view the image file URI 
       console.log('imageURI : ' + imageURI);
 
-      // Get image handle
-      //
-      var largeImage = document.getElementById('largeImage');
-      var largeImage = document.getElementById('smallImage');
-      
-      var f=  window.frames['rcaframe'];
-      
-      var largeImage = f.document.getElementById('smallImage');
+
+      //var largeImage = f.document.getElementById('smallImage');
       var button = f.document.getElementById('sendphoto');
             
       button.style.display = 'block';
       button.onclick = function() { uploadPhoto(imageURI) };
       
-      // Unhide image elements
-      //
-      largeImage.style.display = 'block';
-
       // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      largeImage.src = imageURI;
+     //largeImage.style.display = 'block';
+      //largeImage.src = imageURI;
     }
 
     // A button will call this function
@@ -164,7 +150,7 @@
     	options.params = params;
     	options.chunkedMode = false;
     	var ft = new FileTransfer();
-    	ft.upload(imageURI, "http://cr-ca.ktp-concept.com/reception.php", win, fail, options);
+    	ft.upload(imageURI, url_Upload, win, fail, options);
     }
     
     function win(r) {
@@ -172,6 +158,12 @@
     	console.log("Response = " + r.response);
     	console.log("Sent = " + r.bytesSent);
     	//alert(r.response);
+    	
+    	
+    	var button = f.document.getElementById('sendphoto');   
+        button.style.display = 'none';
+        button.onclick = function() {};
+        
     	navigator.notification.alert("Media correctement envoye !",alertDismissed,"Message");
     }
     

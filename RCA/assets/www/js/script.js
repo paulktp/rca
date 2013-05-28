@@ -13,12 +13,9 @@
     	 if (networkState == Connection.NONE) {
              //window.location="local/index.html";
     		 navigator.notification.alert('L\'application RCA Jeunes requiere une connexion internet.');
-         } else {
-        	// window.location="http://cr-ca.ktp-concept.com/test.html";
-        	 
+         } else { 
          }
-       	 
-    	 
+
     	 //CAMERA
     	 //
     	 pictureSource=navigator.camera.PictureSourceType;
@@ -164,7 +161,7 @@
         button.style.display = 'none';
         button.onclick = function() {};
         
-    	navigator.notification.alert("Media correctement envoye !",alertDismissed,"Message");
+    	navigator.notification.alert("Media correctement envoye !",alertDismissed,"Confirmation");
     }
     
     function fail(error) {

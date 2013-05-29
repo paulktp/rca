@@ -31,16 +31,11 @@
 			   var iBody = $("#rcaframe").contents().find("body");
 			   
 			   	var menu_mobil = iBody.find('h3.menu-toggle');
-			   	menu_mobil.css('top',$(window).height());
-			   	var ttop = $(window).height()-67+$(document).scrollTop();
-			    //menu_mobil.css('top',ttop);
-			    menu_mobil.animate({top:ttop},200,function(){})
+			   	var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();
+			   	menu_mobil.css('top',$(window).height()).animate({top:ttop},200,function(){})
 				
 			     var unEl = iBody.find("#bt_add_photos")
 			    console.log("unEl : " + unEl.attr('alt'))
-			    
-			     var unEl2 = iBody.find("#smallImage")
-			    console.log("unEl2 : " + unEl2.attr('style'))
 			    
 			    var id_post = iBody.find("article").attr('id')
 			    console.log("id_post : " + id_post)
@@ -56,10 +51,11 @@
 				
 				var iBody = $("#rcaframe").contents().find("body");
 				var menu_mobil = iBody.find('h3.menu-toggle');
-				var ttop = $(window).height()-67+$(document).scrollTop();
+				var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();
+			   
 			    //menu_mobil.css('top',ttop);
 			    menu_mobil.animate({top:ttop},200,function(){})
-			    console.log("menu_mobil : " + menu_mobil.attr('class') + " " + ttop)
+			    //console.log("menu_mobil : " + menu_mobil.attr('class') + " " + ttop)
 			});
 		    
 		    /*

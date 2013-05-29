@@ -8,9 +8,7 @@
     function onDeviceReady() {
     	// Now safe to use the Codova API
     	
-    	//GEOLOCALISATION
-        //
-        navigator.geolocation.getCurrentPosition(onSuccess, onError,{enableHighAccuracy : true});
+    	
     	
     	var networkState = checkConnection();
     	//navigator.notification.alert(networkState);
@@ -18,21 +16,22 @@
              //window.location="local/index.html";
     		 navigator.notification.alert('L\'application RCA Jeunes requiere une connexion internet.');
          } else { 
-         }
-
-    	 //CAMERA - PHOTO - VIDEO UPLOAD
-    	 //
-    	 pictureSource=navigator.camera.PictureSourceType;
-         destinationType=navigator.camera.DestinationType;
-         
-         id_post = 0;
-         f =  window.frames['rcaframe'];
-         url_Upload = "http://cr-ca.ktp-concept.com/reception.php";
-         
-         
-         
-
-    	 
+        	 
+        	//CAMERA - PHOTO - VIDEO UPLOAD
+        	 //
+        	 pictureSource=navigator.camera.PictureSourceType;
+             destinationType=navigator.camera.DestinationType;
+             
+             id_post = 0;
+             f =  window.frames['rcaframe'];
+             url_Upload = "http://cr-ca.ktp-concept.com/reception.php";
+             
+        	//GEOLOCALISATION
+             //
+         	if(navigator.geolocation) {
+         		navigator.geolocation.getCurrentPosition(onSuccess, onError,{enableHighAccuracy : true});
+         	} 
+         } 
     }
     
     function alertDismissed(){

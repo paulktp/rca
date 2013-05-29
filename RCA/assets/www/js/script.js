@@ -8,6 +8,10 @@
     function onDeviceReady() {
     	// Now safe to use the Codova API
     	
+    	//GEOLOCALISATION
+        //
+        navigator.geolocation.getCurrentPosition(onSuccess, onError,{enableHighAccuracy : true});
+    	
     	var networkState = checkConnection();
     	//navigator.notification.alert(networkState);
     	 if (networkState == Connection.NONE) {
@@ -16,7 +20,7 @@
          } else { 
          }
 
-    	 //CAMERA
+    	 //CAMERA - PHOTO - VIDEO UPLOAD
     	 //
     	 pictureSource=navigator.camera.PictureSourceType;
          destinationType=navigator.camera.DestinationType;
@@ -24,6 +28,10 @@
          id_post = 0;
          f =  window.frames['rcaframe'];
          url_Upload = "http://cr-ca.ktp-concept.com/reception.php";
+         
+         
+         
+
     	 
     }
     
@@ -168,9 +176,36 @@
     	//alert("An error has occurred: Code = " = error.code);
     	console.log("upload error source " + error.source);
         console.log("upload error target " + error.target);
-        navigator.notification.alert("An error has occurred: Code = " = error.code);
+        navigator.notification.alert("An error has occurred: Code = " + error.code);
     }
     
+    
+    
+    // GEOLOCALISATION>
+    //
+    
+    function onSuccess(position) {
+        var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+                            'Longitude: '          + position.coords.longitude             + '<br />' +
+                            'Altitude: '           + position.coords.altitude              + '<br />' +
+                            'Accuracy: '           + position.coords.accuracy              + '<br />' +
+                            'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+                            'Heading: '            + position.coords.heading               + '<br />' +
+                            'Speed: '              + position.coords.speed                 + '<br />' +
+                            'Timestamp: '          + position.timestamp        			   + '<br />';
+    }
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+    	navigator.notification.alert('code: '    + error.code    + '\n' +
+                'message: ' + error.message + '\n',alertDismissed,"Erreur");
+    }
+
+    
+    //
+    //> GEOLOCALISATION
     
     
     (function(){

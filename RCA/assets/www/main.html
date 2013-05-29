@@ -12,14 +12,15 @@
 
 	</head>
 	<body>
-
 	<iframe name="rcaframe" id="rcaframe"
           sandbox="allow-same-origin allow-top-navigation allow-scripts allow-popups allow-forms"
          src="http://cr-ca.ktp-concept.com" 
-          style="border: 0; width:100%; height:100%;"></iframe> 
+          style="border: 0; width:100%; height:800px;"
+          onload="setIframeHeight(this.id)"></iframe> 
 	
 	<script>
 		$(function() {
+
 			//jQuery.noConflict();
 			
 			$('#rcaframe').load(function(){
@@ -27,9 +28,12 @@
 		        console.log('iframe loaded')
 		        
 		        //here you have the control over the body of the iframe document
-			    var iBody = $("#rcaframe").contents().find("body");
-				console.log(iBody.attr("id"))
-			    
+			   var iBody = $("#rcaframe").contents().find("body");
+			   
+			   	var menu_mobil = iBody.find('h3.menu-toggle');
+			   	var ttop = $(window).height()-67+$(document).scrollTop();
+			    menu_mobil.css('top',ttop);
+				
 			     var unEl = iBody.find("#bt_add_photos")
 			    console.log("unEl : " + unEl.attr('alt'))
 			    
@@ -43,11 +47,58 @@
 	    	    	getPhoto(pictureSource.PHOTOLIBRARY, id_post); //From Photo Library
 	    	    });
 		    });
+		    
+		    $(window).scroll(function () {
+				//console.log("scrolling!")
+				//console.log($(document).scrollTop());
+				
+				var iBody = $("#rcaframe").contents().find("body");
+				var menu_mobil = iBody.find('h3.menu-toggle');
+				var ttop = $(window).height()-67+$(document).scrollTop();
+			   // menu_mobil.css('top',ttop);
+			    menu_mobil.animate({top:ttop},200,function(){})
+			    console.log("menu_mobil : " + menu_mobil.attr('class') + " " + ttop)
+			});
+		    
+		   
+		    $('#button').click(function(){
+		    
+		     console.log("rcaframe contents height: " + $('#rcaframe').contents().height())
+		     
+		     console.log("rcaframe contents scrollTop: " + $("#rcaframe").contents().scrollTop())
+		     
+		     console.log("rcaframe height: " + $("#rcaframe").height())
+		     
+		     console.log("iframe scroll : " + $("#rcaframe").contents().scrollTop())
+		     
+		  	 console.log("main scroll : " + $("#button").scrollTop())
+		    
+		    })
+		    
 			
 			
 		    
 		
 		});
+		
+		function getDocHeight(doc) {
+		    doc = doc || document;
+		    // from http://stackoverflow.com/questions/1145850/get-height-of-entire-document-with-javascript
+		    var body = doc.body, html = doc.documentElement;
+		    var height = Math.max( body.scrollHeight, body.offsetHeight, 
+		        html.clientHeight, html.scrollHeight, html.offsetHeight );
+		    return height;
+		}
+		
+		function setIframeHeight(id) {
+		    var ifrm = document.getElementById(id);
+		    var doc = ifrm.contentDocument? ifrm.contentDocument: ifrm.contentWindow.document;
+		    ifrm.style.visibility = 'hidden';
+		    ifrm.style.height = "10px"; // reset to minimal height in case going from longer to shorter doc
+		    ifrm.style.height = getDocHeight( doc ) + "px";
+		    ifrm.style.visibility = 'visible';
+		    console.log("Iframe Content height : " + getDocHeight( doc ) + "px");
+		}
 	</script>
 	
 	

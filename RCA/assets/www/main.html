@@ -96,7 +96,7 @@
 		    return height;
 		}
 		
-		function setIframeHeight(id) {
+		function setIframeHeight_old(id) {
 		    var ifrm = document.getElementById(id);
 		    var doc = ifrm.contentDocument? ifrm.contentDocument: ifrm.contentWindow.document;
 		    ifrm.style.visibility = 'hidden';
@@ -104,6 +104,16 @@
 		    ifrm.style.height = getDocHeight( doc ) + "px";
 		    ifrm.style.visibility = 'visible';
 		    console.log("Iframe Content height : " + getDocHeight( doc ) + "px");
+		}
+		
+		function setIframeHeight(id) {
+		    var ifrm = document.getElementById(id);
+		    var doc = ifrm.contentDocument? ifrm.contentDocument: ifrm.contentWindow.document;
+		    ifrm.style.visibility = 'hidden';
+		    ifrm.style.height = "10px"; // reset to minimal height in case going from longer to shorter doc
+		    ifrm.style.height = $(window).height() + "px";
+		    ifrm.style.visibility = 'visible';
+		    console.log("Iframe Content height : " + $(window).height() + "px");
 		}
 	</script>
 	

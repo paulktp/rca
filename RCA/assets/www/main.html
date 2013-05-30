@@ -17,7 +17,7 @@
           sandbox="allow-same-origin allow-top-navigation allow-scripts allow-popups allow-forms"
          src="http://cr-ca.ktp-concept.com" 
           style="border: 0; width:100%; height:800px;"
-          onload="setIframeHeight(this.id)"></iframe> 
+          onload=""></iframe> 
 	
 	<script>
 		$(function() {
@@ -27,6 +27,8 @@
 			$('#rcaframe').load(function(){
 		        
 		        console.log('iframe loaded')
+		        
+		        $("#rcaframe").height($(window).height())
 		        
 		        //here you have the control over the body of the iframe document
 			   var iBody = $("#rcaframe").contents().find("body");
@@ -46,26 +48,7 @@
 	    	    });
 		    });
 		    
-		    $(window).scroll(function () {
-				//console.log("scrolling!")
-				//console.log($(document).scrollTop());
-				
-				var iBody = $("#rcaframe").contents().find("body");
-				var menu_mobil = iBody.find('h3.menu-toggle');
-				var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();
-			   
-			    //menu_mobil.css('top',ttop);
-			    menu_mobil.animate({top:ttop},200,function(){})
-			    //console.log("menu_mobil : " + menu_mobil.attr('class') + " " + ttop)
-			});
-		    
-		    /*
-		     $(window).bind('scrollstart', function(){
-				 console.log("start scroll")
-			 }); 
-			 $(window).bind('scrollstop', function(){
-				 console.log("stop scroll")
-			 });*/
+		   
 		   
 		    $('#button').click(function(){
 		    
@@ -87,34 +70,7 @@
 		
 		});
 		
-		function getDocHeight(doc) {
-		    doc = doc || document;
-		    // from http://stackoverflow.com/questions/1145850/get-height-of-entire-document-with-javascript
-		    var body = doc.body, html = doc.documentElement;
-		    var height = Math.max( body.scrollHeight, body.offsetHeight, 
-		        html.clientHeight, html.scrollHeight, html.offsetHeight );
-		    return height;
-		}
 		
-		function setIframeHeight_old(id) {
-		    var ifrm = document.getElementById(id);
-		    var doc = ifrm.contentDocument? ifrm.contentDocument: ifrm.contentWindow.document;
-		    ifrm.style.visibility = 'hidden';
-		    ifrm.style.height = "10px"; // reset to minimal height in case going from longer to shorter doc
-		    ifrm.style.height = getDocHeight( doc ) + "px";
-		    ifrm.style.visibility = 'visible';
-		    console.log("Iframe Content height : " + getDocHeight( doc ) + "px");
-		}
-		
-		function setIframeHeight(id) {
-		    var ifrm = document.getElementById(id);
-		    var doc = ifrm.contentDocument? ifrm.contentDocument: ifrm.contentWindow.document;
-		    ifrm.style.visibility = 'hidden';
-		    ifrm.style.height = "10px"; // reset to minimal height in case going from longer to shorter doc
-		    ifrm.style.height = $(window).height() + "px";
-		    ifrm.style.visibility = 'visible';
-		    console.log("Iframe Content height : " + $(window).height() + "px");
-		}
 	</script>
 	
 	

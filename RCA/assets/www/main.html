@@ -32,10 +32,6 @@
 		        
 		        //here you have the control over the body of the iframe document
 			   var iBody = $("#rcaframe").contents().find("body");
-			   
-			   	var menu_mobil = iBody.find('h3.menu-toggle');
-			   	var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();
-			   	menu_mobil.css('top',$(window).height()).animate({top:ttop},200,function(){})
 				
 			     var unEl = iBody.find("#bt_add_photos")
 			    console.log("unEl : " + unEl.attr('alt'))

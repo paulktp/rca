@@ -27,7 +27,10 @@
 			$('#rcaframe').load(function(){
 		        
 		        console.log('iframe loaded')
-		      
+		        
+		       alert($(window).height())
+		       alert($(document).height())
+		       
 		        $("#rcaframe").height($(window).height()-20)
 		        
 		        //here you have the control over the body of the iframe document

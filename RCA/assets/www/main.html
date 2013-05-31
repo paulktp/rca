@@ -28,16 +28,16 @@
 		        
 		        console.log('iframe loaded')
 		        
-		       alert($(window).height())
-		       alert($(document).height())
+		       //alert($(window).height())
+		       //alert($(document).height())
 		       
-		        $("#rcaframe").height($(window).height()-20)
+		        $("#rcaframe").height($(window).height())
 		        
 		        //here you have the control over the body of the iframe document
 			   var iBody = $("#rcaframe").contents().find("body");
 			   
 			   	var menu_mobil = iBody.find('nav.main-navigation');
-			   	menu_mobil.height($(window).height()-30)
+			   	menu_mobil.height($(window).height())
 			   	console.log("menu_mobil.heigh : " + menu_mobil.height())
 			   	
 			   	//var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();

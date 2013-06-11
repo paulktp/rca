@@ -11,14 +11,7 @@
     	var model = device.model;
     	
     	if(model.substr(0,2) == "iP"){
-    		
-    		//alert("Apple");
-    		//f =  window.frames['rcaframe'];
-    		//alert(window.height)
-    		//var buttonm = f.document.getElementById('sendphoto');
-              
-    		//buttonm.style.display = 'block';
-    		
+    		//alert("Apple");    		
     	}
 
     	

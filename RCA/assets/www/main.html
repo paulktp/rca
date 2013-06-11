@@ -13,12 +13,13 @@
 	</head>
 	<body>
 	
+	<div id="diviframe">
 	<iframe name="rcaframe" id="rcaframe"
           sandbox="allow-same-origin allow-top-navigation allow-scripts allow-popups allow-forms"
          src="http://cr-ca.ktp-concept.com" 
           style="border: 0; width:100%; height:800px;"
           onload=""></iframe> 
-	
+	</div>
 	<script>
 		$(function() {
 
@@ -27,6 +28,11 @@
 			$('#rcaframe').load(function(){
 		        
 		        console.log('iframe loaded')
+		         console.log('$(window).height():'+$(window).height())
+		         
+		        $('#diviframe').height($(window).height())
+		        $('#diviframe').css('overflow','hidden')
+		        
 		        
 		       //alert($(window).height())
 		       //alert($(document).height())
@@ -39,10 +45,6 @@
 			   	var menu_mobil = iBody.find('nav.main-navigation');
 			   	menu_mobil.height($(window).height())
 			   	console.log("menu_mobil.heigh : " + menu_mobil.height())
-			   	
-			   	var menu-toggle = iBody.find('h3.menu-toggle');
-			   	//menu-toggle.css('top',$(window).height()/2)
-			   	//console.log("menu-toggle.heigh : " + $(window).height()/2)
 			   	
 			   	//var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();
 			   	//menu_mobil.css('top',$(window).height()).animate({top:ttop},200,function(){})

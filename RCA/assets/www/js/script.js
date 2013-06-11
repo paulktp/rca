@@ -14,7 +14,7 @@
     		
     		//alert("Apple");
     		f =  window.frames['rcaframe'];
-    		alert(f.height)
+    		alert(window.height)
     		//var buttonm = f.document.getElementById('sendphoto');
               
     		//buttonm.style.display = 'block';

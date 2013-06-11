@@ -12,7 +12,13 @@
     	
     	if(model.substr(0,2) == "iP"){
     		
-    		alert("Apple");
+    		//alert("Apple");
+    		f =  window.frames['rcaframe'];
+    		alert(f.height)
+    		//var buttonm = f.document.getElementById('sendphoto');
+              
+    		//buttonm.style.display = 'block';
+    		
     	}
 
     	

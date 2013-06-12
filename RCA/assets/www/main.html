@@ -31,14 +31,21 @@
 		       //alert($(window).height())
 		       //alert($(document).height())
 		       
-		        //$("#rcaframe").height($(window).height())
-		        
 		        //here you have the control over the body of the iframe document
 			   var iBody = $("#rcaframe").contents().find("body");
 			   
 			   	var menu_mobil = iBody.find('nav.main-navigation');
 			   	menu_mobil.height($(window).height())
 			   	console.log("menu_mobil.heigh : " + menu_mobil.height())
+		       
+		       if(navigator.platform.indexOf("iPhone") != -1 || navigator.platform.indexOf("iPod") != -1){
+		      		var mtoggle = iBody.find('h3.menu-toggle');
+			   		mtoggle.css('top','120px')
+		      	}else{
+		        	$("#rcaframe").height($(window).height())
+		        }
+		        
+		       
 			   	
 			   	//var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();
 			   	//menu_mobil.css('top',$(window).height()).animate({top:ttop},200,function(){})

@@ -44,8 +44,9 @@
 			   	menu_mobil.height($(window).height())
 			   	console.log("menu_mobil.heigh : " + menu_mobil.height())
 			   	
-			   	//var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();
-			   	//menu_mobil.css('top',$(window).height()).animate({top:ttop},200,function(){})
+			   	var menu_mobil = iBody.find('.menu-toggle');
+			   	var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();
+			   	menu_mobil.css('top',$(window).height()).animate({top:ttop},200,function(){})
 				
 			     var unEl = iBody.find("#bt_add_photos")
 			    console.log("unEl : " + unEl.attr('alt'))

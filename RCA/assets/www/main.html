@@ -46,6 +46,21 @@
 			   	menu_mobil.height($(window).height())
 			   	console.log("menu_mobil.heigh : " + menu_mobil.height())
 			   	
+			   	
+			   	
+			   	if(navigator.platform.indexOf("iPhone") != -1 || navigator.platform.indexOf("iPod") != -1){
+		         	var menu-toggle = iBody.find('h3.menu-toggle');
+		         	menu-toggle.css('top','60px')
+		         	var menu_mobil = iBody.find('nav.main-navigation');
+				   	menu_mobil.height($('#rcaframe').contents().find("body").height())
+				   	console.log("menu_mobil.heigh apple: " + menu_mobil.height())
+		         	
+		        }else{
+		        	
+		        }
+			   	
+			   	
+			   	
 			   	//var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();
 			   	//menu_mobil.css('top',$(window).height()).animate({top:ttop},200,function(){})
 				

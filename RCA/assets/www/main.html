@@ -11,18 +11,14 @@
 		<script type="text/javascript" charset="utf-8" src="js/script.js"></script>
 
 	</head>
-	<body id="crbody">
+	<body>
 	
+	<iframe name="rcaframe" id="rcaframe"
+          sandbox="allow-same-origin allow-top-navigation allow-scripts allow-popups allow-forms"
+         src="http://cr-ca.ktp-concept.com" 
+          style="border: 0; width:100%; height:800px;"
+          onload=""></iframe> 
 	
-		
-			<iframe name="rcaframe" id="rcaframe"
-		          sandbox="allow-same-origin allow-top-navigation allow-scripts allow-popups allow-forms"
-		         src="http://cr-ca.ktp-concept.com" 
-		          style="border: 0; width:100%; height:100%;"
-		          onload=""></iframe> 
-		<!-- <div id="scroller" style="height: 400px; width: 100%; overflow: auto;">
-		</div>-->
-
 	<script>
 		$(function() {
 
@@ -31,8 +27,6 @@
 			$('#rcaframe').load(function(){
 		        
 		        console.log('iframe loaded')
-		        
-		         //alert("rcaframe contents body height: " + $('#rcaframe').contents().find("body").height())
 		        
 		       //alert($(window).height())
 		       //alert($(document).height())
@@ -46,16 +40,6 @@
 			   	menu_mobil.height($(window).height())
 			   	console.log("menu_mobil.heigh : " + menu_mobil.height())
 			   	
-			   	
-			   	
-			   	if(navigator.platform.indexOf("iPhone") != -1 || navigator.platform.indexOf("iPod") != -1){
-					
-		        }else{
-		        	
-		        }
-			   	
-			   	
-			   	
 			   	//var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();
 			   	//menu_mobil.css('top',$(window).height()).animate({top:ttop},200,function(){})
 				
@@ -63,8 +47,6 @@
 			    console.log("unEl : " + unEl.attr('alt'))
 			    
 			    var id_post = iBody.find("article").attr('id')
-			    //var id_post = iBody.find('div[id^="post-"]').attr('value')
-			    
 			    console.log("id_post : " + id_post)
 			    
 			    unEl.click(function() {

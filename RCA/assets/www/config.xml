@@ -3,7 +3,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.ktp.rca"
         versionCode="10"
-        version="1.1.23">
+        version="1.1.27">
 
     <!-- versionCode is optional and Android only -->
  

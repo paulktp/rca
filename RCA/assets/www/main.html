@@ -30,21 +30,25 @@
 			          onload=""></iframe>
 	    </div>
 	    <div data-role="panel" id="right-panel"  data-position="right" data-theme="c">
-	    	<div class="main-navigation"></div>
+	    	<!-- <div class="main-navigation"></div> -->
 		</div>
 	</div>
 		
 				
 	      
 	<script>
+		var menu_html_rca = '';
+		var iBody = ''
+	
 		$(function() {
 			$('#rcaframe').load(function(){
 		        
 		        console.log('iframe loaded')
+		       iBody = $("#rcaframe").contents().find("body");
 		       
-		        //here you have the control over the body of the iframe document
-			   var iBody = $("#rcaframe").contents().find("body");
-			   
+		       
+			   var mtoggle = iBody.find('h3.menu-toggle');
+	    	    if($(window).width()<600) mtoggle.css('display','none')
 		       
 		       if(navigator.platform.indexOf("iPhone") != -1 || navigator.platform.indexOf("iPod") != -1){
 		      		
@@ -55,7 +59,6 @@
 		        
 		       $("#rcaframe").height($(window).height())
 
-				
 			     var unEl = iBody.find("#bt_add_photos")
 			    console.log("unEl : " + unEl.attr('alt'))
 			    
@@ -66,34 +69,39 @@
 	    	    	getPhoto(pictureSource.PHOTOLIBRARY, id_post); //From Photo Library
 	    	    });
 	    	    
-	    	    var mtoggle = iBody.find('h3.menu-toggle');
-	    	    if($(window).width()<600) mtoggle.css('display','none')
+	    	    
 	    	    
 	    	    
 	    	    //load menu
 	    	    //
-	    	    var menu_mobil = iBody.find('.menu-menu-principal-container').html();
-	    	    $(".main-navigation").html('<div class="menu-menu-principal-container">'+menu_mobil+'</div>')
+	    	    if(menu_html_rca == ''){
+					iBody.find('.main-navigation').clone().appendTo('#right-panel');
+					menu_html_rca = 'menu_ok';
+				}
+				
 	    	    $(".main-navigation a.ui-link").each(function(){
 					$(this).attr("target",'rcaframe');
 				});
+				
 				$(".main-navigation a.ui-link").on("click",function(){
-					$("#right-panel").panel( "close" );
-					
-				});
-				$("#right-panel").panel({
-						beforeclose: function( event, ui ) {
-							$.mobile.loading("show", {
+					$.mobile.loading("show", {
 								text: "Custom loader",
 								textVisible: true,
 								theme: "a",
 								textonly: true,
 								html: "Chargement en cours..."
 								});
+					$("#right-panel").panel( "close" );
+
+				});
+				
+				$("#right-panel").panel({
+						beforeclose: function( event, ui ) {
+						
 						}
-					});
+				});
 					
-				  $.mobile.loading("hide");
+				$.mobile.loading("hide");
 		    });
 		    
 		   

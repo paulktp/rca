@@ -19,7 +19,7 @@
 	<body>
 	<div data-url="demo-page" data-role="page" id="demo-page" data-theme="d">
 	    <div data-role="header" data-theme="c" >
-	        <a href="#right-panel" class="ui-btn-right menu-toggle-right" data-role="none"><img src="http://cr-ca.ktp-concept.com/wp-content/themes/rcajeunes/images/nav_menu.png"/></a>
+	        <a id="to-right-panel" href="#right-panel" class="ui-btn-right menu-toggle-right" data-role="none"><img src="http://cr-ca.ktp-concept.com/wp-content/themes/rcajeunes/images/nav_menu.png"/></a>
 	    </div>
 		
 	    <div data-role="content">
@@ -99,7 +99,8 @@
 						}
 				});
 				
-				$.mobile.loading( "hide" );	
+				
+				hideLoading()
 				
 				iBody.find('a').click(function(){
 					console.log("click")
@@ -109,6 +110,7 @@
 		    });
 		    
 		   function showLoading(){
+		   		$('#to-right-panel').hide();
 		   		$.mobile.loading("show", {
 								text: "Custom loader",
 								textVisible: true,
@@ -117,6 +119,12 @@
 								html: "Chargement en cours..."
 								});
 		   }
+		   
+		   function hideLoading(){
+		   		$('#to-right-panel').show();
+		   		$.mobile.loading( "hide" );	
+		   }
+		   
 		   
 		    $('#button').click(function(){
 		    

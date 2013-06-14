@@ -23,7 +23,6 @@
 	    </div>
 		
 	    <div data-role="content">
-
 	           <iframe name="rcaframe" id="rcaframe"
 			          sandbox="allow-same-origin allow-top-navigation allow-scripts allow-popups allow-forms"
 			         src="http://cr-ca.ktp-concept.com" 
@@ -39,35 +38,23 @@
 	      
 	<script>
 		$(function() {
-
-			//jQuery.noConflict();
-			
 			$('#rcaframe').load(function(){
 		        
 		        console.log('iframe loaded')
-		        
-		       //alert($(window).height())
-		       //alert($(document).height())
 		       
 		        //here you have the control over the body of the iframe document
 			   var iBody = $("#rcaframe").contents().find("body");
 			   
-			   	var menu_mobil = iBody.find('nav.main-navigation');
-			   	menu_mobil.height($(window).height())
-			   	console.log("menu_mobil.heigh : " + menu_mobil.height())
 		       
 		       if(navigator.platform.indexOf("iPhone") != -1 || navigator.platform.indexOf("iPod") != -1){
-		      		var mtoggle = iBody.find('h3.menu-toggle');
-			   		mtoggle.css('top','120px')
-			   		$("#rcaframe").height($(window).height())
+		      		
+			   		
 		      	}else{
-		        	$("#rcaframe").height($(window).height())
+		        	
 		        }
 		        
-		       
-			   	
-			   	//var ttop = $(window).height()-menu_mobil.outerHeight()+$(document).scrollTop();
-			   	//menu_mobil.css('top',$(window).height()).animate({top:ttop},200,function(){})
+		       $("#rcaframe").height($(window).height())
+
 				
 			     var unEl = iBody.find("#bt_add_photos")
 			    console.log("unEl : " + unEl.attr('alt'))
@@ -79,6 +66,9 @@
 	    	    	getPhoto(pictureSource.PHOTOLIBRARY, id_post); //From Photo Library
 	    	    });
 	    	    
+	    	    var mtoggle = iBody.find('h3.menu-toggle');
+	    	    if($(window).width()<600) mtoggle.css('display','none')
+	    	    
 	    	    
 	    	    //load menu
 	    	    //
@@ -87,9 +77,23 @@
 	    	    $(".main-navigation a.ui-link").each(function(){
 					$(this).attr("target",'rcaframe');
 				});
-	    	    
-	    	    var mtoggle = iBody.find('h3.menu-toggle');
-	    	    if($(window).width()<600) mtoggle.css('display','none')
+				$(".main-navigation a.ui-link").on("click",function(){
+					$("#right-panel").panel( "close" );
+					
+				});
+				$("#right-panel").panel({
+						beforeclose: function( event, ui ) {
+							$.mobile.loading("show", {
+								text: "Custom loader",
+								textVisible: true,
+								theme: "a",
+								textonly: true,
+								html: "Chargement en cours..."
+								});
+						}
+					});
+					
+				  $.mobile.loading("hide");
 		    });
 		    
 		   
@@ -107,11 +111,6 @@
 		  	 console.log("main scroll : " + $("#button").scrollTop())
 		    
 		    })
-		    
-			
-			
-		    
-		
 		});
 		
 		

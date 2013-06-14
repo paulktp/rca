@@ -103,14 +103,16 @@
 				hideLoading()
 				
 				iBody.find('a').click(function(){
-					console.log("click")
-					console.log($(this).attr('href'))
-					showLoading()
+					if($(this).attr('href').substring(0,1) != '#'){
+						console.log("click")
+						console.log($(this).attr('href'))
+						showLoading()
+					}
 				})
 		    });
 		    
 		   function showLoading(){
-		   		$('#to-right-panel').hide();
+		   		//$('#to-right-panel').hide();
 		   		$.mobile.loading("show", {
 								text: "Custom loader",
 								textVisible: true,
@@ -121,7 +123,7 @@
 		   }
 		   
 		   function hideLoading(){
-		   		$('#to-right-panel').show();
+		   		//$('#to-right-panel').show();
 		   		$.mobile.loading( "hide" );	
 		   }
 		   

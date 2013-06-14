@@ -19,7 +19,7 @@
 	<body>
 	<div data-url="demo-page" data-role="page" id="demo-page" data-theme="d">
 	    <div data-role="header" data-theme="c">
-	        <a href="#right-panel" class="ui-btn-right" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
+	        <a href="#right-panel" class="ui-btn-right" data-role="none" style="position: fixed;right: -10px;top:-10px;"><img src="http://cr-ca.ktp-concept.com/wp-content/themes/rcajeunes/images/nav_menu.png"/></a>
 	    </div>
 		
 	    <div data-role="content">
@@ -83,6 +83,9 @@
 	    	    //
 	    	    var menu_mobil = iBody.find('.menu-menu-principal-container').html();
 	    	    $(".main-navigation").html('<div class="menu-menu-principal-container">'+menu_mobil+'</div>')
+	    	    $(".main-navigation a.ui-link").each(function(){
+					$(this).attr("target",'rcaframe');
+				});
 	    	    
 	    	    var mtoggle = iBody.find('h3.menu-toggle');
 	    	    if($(window).width()<600) mtoggle.css('display','none')

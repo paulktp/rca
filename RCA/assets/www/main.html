@@ -27,7 +27,7 @@
 			          sandbox="allow-same-origin allow-top-navigation allow-scripts allow-popups allow-forms"
 			         src="http://cr-ca.ktp-concept.com" 
 			          style="border: 0; width:100%; height:800px;"
-			          onload=""></iframe>
+			          onload="showLoading()"></iframe>
 	    </div>
 	    <div data-role="panel" id="right-panel"  data-position="right" data-theme="c">
 	    	<!-- <div class="main-navigation"></div> -->
@@ -41,6 +41,11 @@
 		var iBody = ''
 	
 		$(function() {
+		
+			$('#rcaframe').ready(function () {
+				showLoading()
+			});
+		
 			$('#rcaframe').load(function(){
 		        
 		        console.log('iframe loaded')
@@ -84,15 +89,8 @@
 				});
 				
 				$(".main-navigation a.ui-link").on("click",function(){
-					$.mobile.loading("show", {
-								text: "Custom loader",
-								textVisible: true,
-								theme: "a",
-								textonly: true,
-								html: "Chargement en cours..."
-								});
+					showLoading()
 					$("#right-panel").panel( "close" );
-
 				});
 				
 				$("#right-panel").panel({
@@ -100,11 +98,25 @@
 						
 						}
 				});
-					
-				$.mobile.loading("hide");
+				
+				$.mobile.loading( "hide" );	
+				
+				iBody.find('a').click(function(){
+					console.log("click")
+					console.log($(this).attr('href'))
+					showLoading()
+				})
 		    });
 		    
-		   
+		   function showLoading(){
+		   		$.mobile.loading("show", {
+								text: "Custom loader",
+								textVisible: true,
+								theme: "a",
+								textonly: true,
+								html: "Chargement en cours..."
+								});
+		   }
 		   
 		    $('#button').click(function(){
 		    

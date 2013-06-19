@@ -17,7 +17,7 @@
     <author href="http://www.ktp.net" email="contact@ktp.net">
         KTP Concept
     </author>
-    <preference name="phonegap-version" value="2.8.0" />
+    <preference name="phonegap-version" value="2.7.0" />
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="prerendered-icon" value="true" />

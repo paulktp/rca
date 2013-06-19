@@ -31,11 +31,6 @@
              f =  window.frames['rcaframe'];
              url_Upload = "http://cr-ca.ktp-concept.com/reception.php";
              
-        	//GEOLOCALISATION
-             //
-         	if(navigator.geolocation) {
-         		navigator.geolocation.getCurrentPosition(onSuccess, onError,{enableHighAccuracy : true});
-         	} 
          } 
     }
     
@@ -146,8 +141,8 @@
     //
     function uploadPhoto(imageURI) {
     	
-    	console.log('imageURI : ' + imageURI);
-    	console.log('id_post_' + id_post);
+    	//console.log('imageURI : ' + imageURI);
+    	//console.log('id_post_' + id_post);
     	
     	var options = new FileUploadOptions();
     	options.fileKey="file";
@@ -163,9 +158,9 @@
     }
     
     function win(r) {
-    	console.log("Code = " + r.responseCode);
-    	console.log("Response = " + r.response);
-    	console.log("Sent = " + r.bytesSent);
+    	//console.log("Code = " + r.responseCode);
+    	//console.log("Response = " + r.response);
+    	//console.log("Sent = " + r.bytesSent);
     	//alert(r.response);
     	
     	
@@ -178,40 +173,7 @@
     
     function fail(error) {
     	//alert("An error has occurred: Code = " = error.code);
-    	console.log("upload error source " + error.source);
-        console.log("upload error target " + error.target);
+    	//console.log("upload error source " + error.source);
+        //console.log("upload error target " + error.target);
         navigator.notification.alert("An error has occurred: Code = " + error.code);
     }
-    
-    
-    
-    // GEOLOCALISATION>
-    //
-    
-    function onSuccess(position) {
-        var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
-                            'Longitude: '          + position.coords.longitude             + '<br />' +
-                            'Altitude: '           + position.coords.altitude              + '<br />' +
-                            'Accuracy: '           + position.coords.accuracy              + '<br />' +
-                            'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-                            'Heading: '            + position.coords.heading               + '<br />' +
-                            'Speed: '              + position.coords.speed                 + '<br />' +
-                            'Timestamp: '          + position.timestamp        			   + '<br />';
-    }
-
-    // onError Callback receives a PositionError object
-    //
-    function onError(error) {
-    	navigator.notification.alert('code: '    + error.code    + '\n' +
-                'message: ' + error.message + '\n',alertDismissed,"Erreur");
-    }
-
-    
-    //
-    //> GEOLOCALISATION
-    
-    
-   
-   
-

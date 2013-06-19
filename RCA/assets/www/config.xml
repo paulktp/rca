@@ -3,7 +3,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.ktp.rca"
         versionCode="10"
-        version="1.1.73">
+        version="1.1.74">
 
     <!-- versionCode is optional and Android only -->
  
@@ -32,11 +32,11 @@
 	<icon src="icons/ios/icon_at_2x.png" gap:platform="ios" width="114" height="114" />
 	<icon src="icons/ios/icon-72_at_2x.png" gap:platform="ios" width="144" height="144" />
 	
-	<icon src="icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
-	<icon src="icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
-	<icon src="icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
-	<icon src="icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
-	
+	<icon src="icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" />-->
+	<icon src="icons/android/mdpi48.png" gap:platform="android" gap:density="mdpi" />
+	<icon src="icons/android/hdpi72.png" gap:platform="android" gap:density="hdpi" />
+	<icon src="icons/android/xhdpi96.png" gap:platform="android" gap:density="xhdpi" />
+	<!--
 	<icon src="icons/bb/icon.png" gap:platform="blackberry" />
 	<icon src="icons/bb/icon_hover.png" gap:platform="blackberry" gap:state="hover"/>
 	

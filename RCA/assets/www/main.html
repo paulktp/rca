@@ -34,8 +34,7 @@
 		</div>
 	</div>
 		
-				
-	      
+				  
 	<script>
 		var menu_html_rca = '';
 		var iBody = ''
@@ -48,7 +47,6 @@
 		
 			$('#rcaframe').load(function(){
 		        
-		        console.log('iframe loaded')
 		       iBody = $("#rcaframe").contents().find("body");
 		       
 		       
@@ -65,10 +63,10 @@
 		       $("#rcaframe").height($(window).height())
 
 			     var unEl = iBody.find("#bt_add_photos")
-			    console.log("unEl : " + unEl.attr('alt'))
+			    //console.log("unEl : " + unEl.attr('alt'))
 			    
 			    var id_post = iBody.find("article").attr('id')
-			    console.log("id_post : " + id_post)
+			   // console.log("id_post : " + id_post)
 			    
 			    unEl.click(function() {
 	    	    	getPhoto(pictureSource.PHOTOLIBRARY, id_post); //From Photo Library
@@ -105,11 +103,11 @@
 				
 				iBody.find('a').click(function(){
 					if($(this).attr('href').substring(0,1) != '#'){
-						console.log("click")
-						console.log($(this).attr('href'))
 						showLoading()
 					}
 				})
+				
+				
 		    });
 		    
 		   function showLoading(){
@@ -127,26 +125,8 @@
 		   		//$('#to-right-panel').show();
 		   		$.mobile.loading( "hide" );	
 		   }
-		   
-		   
-		    $('#button').click(function(){
-		    
-		     console.log("rcaframe contents height: " + $('#rcaframe').contents().height())
-		     
-		     console.log("rcaframe contents scrollTop: " + $("#rcaframe").contents().scrollTop())
-		     
-		     console.log("rcaframe height: " + $("#rcaframe").height())
-		     
-		     console.log("iframe scroll : " + $("#rcaframe").contents().scrollTop())
-		     
-		  	 console.log("main scroll : " + $("#button").scrollTop())
-		    
-		    })
-		});
-		
-		
+
+		});	
 	</script>
-	
-	
 	</body>
 </html>

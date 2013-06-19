@@ -89,6 +89,7 @@
 				});
 				
 				$(".main-navigation a.ui-link").on("click",function(){
+					if($(this).attr("href") == '/') $(this).attr("href","http://cr-ca.ktp-concept.com")
 					showLoading()
 					$("#right-panel").panel( "close" );
 				});

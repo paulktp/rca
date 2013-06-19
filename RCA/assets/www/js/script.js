@@ -19,7 +19,7 @@
     	//navigator.notification.alert(networkState);
     	 if (networkState == Connection.NONE) {
              //window.location="local/index.html";
-    		 navigator.notification.alert('L\'application RCA Jeunes requiere une connexion internet.');
+    		 navigator.notification.alert('L\'application requiere une connexion internet.');
          } else { 
         	 
         	//CAMERA - PHOTO - VIDEO UPLOAD

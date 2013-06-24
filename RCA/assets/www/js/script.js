@@ -23,8 +23,10 @@
     		 
     		 var a = document.getElementById('main-page');
     		 var b = document.getElementById('no-internet');
-    		 a.style.display = 'none';
-    		 b.style.display = 'block';
+    		// a.style.display = 'none';
+    		// b.style.display = 'block';
+    		 $('#main-page').hide();
+    		 $('#no-internet').show();
          } else { 
         	 
         	//CAMERA - PHOTO - VIDEO UPLOAD

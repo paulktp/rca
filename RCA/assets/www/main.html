@@ -122,6 +122,8 @@
 								textonly: true,
 								html: "Chargement en cours..."
 								});
+								
+				if($('#no-internet').is(':visible')){ hideLoading(); }
 		   }
 		   
 		   function hideLoading(){

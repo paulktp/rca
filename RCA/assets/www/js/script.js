@@ -26,7 +26,7 @@
     		 $('.ui-loader').hide();
     		 
          } else { 
-        	 $('#no-internet').is(':visible'){
+        	 if($('#no-internet').is(':visible')){
 	        	 $('#main-page').show();
 	    		 $('#no-internet').hide();
         	 }

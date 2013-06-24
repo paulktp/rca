@@ -19,13 +19,14 @@
     	//navigator.notification.alert(networkState);
     	 if (networkState == Connection.NONE) {
              //window.location="local/index.html";
-    		 navigator.notification.alert('L\'application requiere une connexion internet.');
+    		 navigator.notification.alert('L\'application requiert une connexion internet.');
     		 
     		 var a = document.getElementById('main-page');
     		 var b = document.getElementById('no-internet');
     		 a.style.display = 'none';
     		 b.style.display = 'block';
-    		 hideLoading();
+    		 var c = document.getElementsByClassName('ui-loader');
+    		 c.style.display = 'none';
          } else { 
         	 
         	//CAMERA - PHOTO - VIDEO UPLOAD

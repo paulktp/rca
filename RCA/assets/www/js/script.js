@@ -20,15 +20,16 @@
     	 if (networkState == Connection.NONE) {
              //window.location="local/index.html";
     		 navigator.notification.alert('L\'application requiert une connexion internet.');
-    		 
-    		 var a = document.getElementById('main-page');
-    		 var b = document.getElementById('no-internet');
-    		// a.style.display = 'none';
-    		// b.style.display = 'block';
+
     		 $('#main-page').hide();
     		 $('#no-internet').show();
+    		 $('.ui-loader').hide();
+    		 
          } else { 
-        	 
+        	 $('#no-internet').is(':visible'){
+	        	 $('#main-page').show();
+	    		 $('#no-internet').hide();
+        	 }
         	//CAMERA - PHOTO - VIDEO UPLOAD
         	 //
         	 pictureSource=navigator.camera.PictureSourceType;

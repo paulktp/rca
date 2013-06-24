@@ -25,6 +25,7 @@
     		 var b = document.getElementById('no-internet');
     		 a.style.display = 'none';
     		 b.style.display = 'block';
+    		 hideLoading();
          } else { 
         	 
         	//CAMERA - PHOTO - VIDEO UPLOAD

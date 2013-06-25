@@ -14,31 +14,7 @@
 		<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.3.1.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/script.js"></script>
-
-	</head>
-	<body>
-	<div id="no-internet" style="display:none;">
-		<p>Pour fonctionner correctement, l'application requiert une connexion Internet (Wifi ou cellulaire - edge ou 3G)</p>
-	</div>
-	<div data-url="main-page" data-role="page" id="main-page" data-theme="d">
-	    <div data-role="header" data-theme="c" >
-	        <a id="to-right-panel" href="#right-panel" class="menu-toggle-right ui-btn-right" data-role="none"><img src="http://cr-ca.ktp-concept.com/wp-content/themes/rcajeunes/images/nav_menu.png"/></a>
-	    </div>
-		
-	    <div data-role="content">
-	           <iframe name="rcaframe" id="rcaframe"
-			          sandbox="allow-same-origin allow-top-navigation allow-scripts allow-popups allow-forms"
-			         src="http://cr-ca.ktp-concept.com" 
-			          style="border: 0; width:100%; height:800px;"
-			          onload=""></iframe> 
-	    </div>
-	    <div data-role="panel" id="right-panel"  data-position="right" data-theme="c">
-	    	<!-- <div class="main-navigation"></div> -->
-		</div>
-	</div>
-		
-				  
-	<script>
+		<script>
 		var menu_html_rca = '';
 		var iBody = ''
 	
@@ -131,5 +107,26 @@
 
 		});	
 	</script>
+	</head>
+	<body>
+	<div id="no-internet" style="display:none;">
+		<p>Pour fonctionner correctement, l'application requiert une connexion Internet (Wifi ou cellulaire - edge ou 3G)</p>
+	</div>
+	<div data-url="main-page" data-role="page" id="main-page" data-theme="d">
+	    <div data-role="header" data-theme="c" >
+	        <a id="to-right-panel" href="#right-panel" class="menu-toggle-right ui-btn-right" data-role="none"><img src="http://cr-ca.ktp-concept.com/wp-content/themes/rcajeunes/images/nav_menu.png"/></a>
+	    </div>
+		
+	    <div data-role="content">
+	           <iframe name="rcaframe" id="rcaframe"
+			          sandbox="allow-same-origin allow-top-navigation allow-scripts allow-popups allow-forms"
+			         src="http://cr-ca.ktp-concept.com" 
+			          style="border: 0; width:100%; height:800px;"
+			          onload="showLoading()"></iframe> 
+	    </div>
+	    <div data-role="panel" id="right-panel"  data-position="right" data-theme="c">
+	    	<!-- <div class="main-navigation"></div> -->
+		</div>
+	</div>
 	</body>
 </html>

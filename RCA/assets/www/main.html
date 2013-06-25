@@ -86,6 +86,7 @@
 						showLoading()
 						if($(this).attr('title') == 'Lycéo'){
 							window.open($(this).attr('href'));
+							hideLoading()
 							return false;
 						}
 					}

@@ -83,12 +83,11 @@
 				
 				iBody.find('a').click(function(){
 					if($(this).attr('href').substring(0,1) != '#'){
-						showLoading()
-						if($(this).attr('title') == 'Lycéo'){
+						if($(this).attr('id') == 'lyceolink'){
 							window.open($(this).attr('href'),'_system');
-							hideLoading();
 							return false;
 						}
+						showLoading()
 					}
 				})
 				

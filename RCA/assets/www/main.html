@@ -56,11 +56,12 @@
 				
 	    	    $(".main-navigation a.ui-link").each(function(){
 					$(this).attr("target",'rcaframe');
+					if($(this).attr("href") == '/') $(this).attr("href","http://cr-ca.ktp-concept.com")
+					if($(this).attr("title") == 'Mon Compte') $(this).attr("href","http://cr-ca.ktp-concept.com/wp-login.php")
 				});
 				
 				$(".main-navigation a.ui-link").on("click",function(){
-					if($(this).attr("href") == '/') $(this).attr("href","http://cr-ca.ktp-concept.com")
-					if($(this).attr("title") == 'Mon Compte') $(this).attr("href","http://cr-ca.ktp-concept.com/wp-login.php")
+					
 					showLoading()
 					$("#right-panel").panel( "close" );
 				});
@@ -81,6 +82,7 @@
 							window.open($(this).attr('href'),'_system');
 							return false;
 						}
+						
 						showLoading()
 					}
 				})

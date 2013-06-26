@@ -77,7 +77,7 @@
 				iBody.find('a').click(function(){
 					var start_link = $(this).attr('href').substring(0,1);
 					if(start_link != '#' && start_link != ''){
-						if($(this).attr('id') == 'lyceolink'){
+						if($(this).attr('id') == 'lyceolink' || $(this).parent('li').attr('id') == 'menu-item-808'){
 							window.open($(this).attr('href'),'_system');
 							return false;
 						}

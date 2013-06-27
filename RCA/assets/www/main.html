@@ -3,7 +3,7 @@
 	<head>
 		<title>RCA Jeunes</title>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		 <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 		
 		<link rel="stylesheet" href="css/bebasneue.css">
 		<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css">
@@ -14,100 +14,7 @@
 		<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.3.1.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/script.js"></script>
-		<script>
-		var menu_html_rca = '';
-		var iBody = ''; 
-	
-		$(function() {
-		
-			$('#rcaframe').ready(function () {
-				showLoading()
-			});
-		
-			$('#rcaframe').load(function(){
-		        
-		       iBody = $("#rcaframe").contents().find("body");
-		       
-		       
-			   var mtoggle = iBody.find('h3.menu-toggle');
-	    	    if($(window).width()<600) mtoggle.css('display','none')
-		       
-		       if(navigator.platform.indexOf("iPhone") != -1 || navigator.platform.indexOf("iPod") != -1){
-		      	}else{}
-		        
-		       $("#rcaframe").height($(window).height())
-
-			     var unEl = iBody.find("#bt_add_photos")
-			    //console.log("unEl : " + unEl.attr('alt'))
-			    
-			    var id_post = iBody.find("article").attr('id')
-			   // console.log("id_post : " + id_post)
-			    
-			    unEl.click(function() {
-	    	    	getPhoto(pictureSource.PHOTOLIBRARY, id_post); //From Photo Library
-	    	    });
-	    	    
-	    	    //load menu
-	    	    //
-	    	    if(menu_html_rca == ''){
-					iBody.find('.main-navigation').clone().appendTo('#right-panel');
-					menu_html_rca = 'menu_ok';
-				}
-				
-	    	    $(".main-navigation a.ui-link").each(function(){
-					$(this).attr("target",'rcaframe');
-					if($(this).attr("href") == '/') $(this).attr("href","http://cr-ca.ktp-concept.com")
-					if($(this).attr("title") == 'Mon Compte') $(this).attr("href","http://cr-ca.ktp-concept.com/wp-login.php")
-				});
-				
-				$(".main-navigation a.ui-link").on("click",function(){
-					
-					showLoading()
-					$("#right-panel").panel( "close" );
-				});
-				
-				$("#right-panel").panel({
-						beforeclose: function( event, ui ) {
-						
-						}
-				});
-				
-				
-				hideLoading();
-				
-				iBody.find('a').click(function(){
-					var start_link = $(this).attr('href').substring(0,1);
-					if(start_link != '#' && start_link != ''){
-						if($(this).attr('id') == 'lyceolink' || $(this).parent('li').attr('id') == 'menu-item-808'){
-							window.open($(this).attr('href'),'_system');
-							return false;
-						}
-						
-						showLoading()
-					}
-				})
-				
-				
-		    });
-		    
-		   function showLoading(){
-		   		//$('#to-right-panel').hide();
-		   		$.mobile.loading("show", {
-								text: "Custom loader",
-								textVisible: true,
-								theme: "a",
-								textonly: true,
-								html: "Chargement en cours..."
-								});
-		   }
-		   
-		   function hideLoading(){
-		   		//$('#to-right-panel').show();
-		   		$.mobile.loading( "hide" );	
-		   }
-
-		});	
-	</script>
+		<script type="text/javascript" charset="utf-8" src="js/script2.js"></script>
 	</head>
 	<body>
 	<div id="no-internet" style="display:none;">
@@ -126,7 +33,6 @@
 			          onload="showLoading()"></iframe> 
 	    </div>
 	    <div data-role="panel" id="right-panel"  data-position="right" data-theme="c">
-	    	<!-- <div class="main-navigation"></div> -->
 		</div>
 	</div>
 	</body>

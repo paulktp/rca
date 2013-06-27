@@ -7,12 +7,6 @@
     //
     function onDeviceReady() {
     	// Now safe to use the Codova API
-    	
-    	var model = device.model;
-    	
-    	if(model.substr(0,2) == "iP"){
-    		//alert("Apple");    		
-    	}
 
     	
     	var networkState = checkConnection();

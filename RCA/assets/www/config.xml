@@ -3,7 +3,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.ktp.rca"
         versionCode="10"
-        version="1.2.10">
+        version="1.2.11">
 
     <!-- versionCode is optional and Android only -->
  
@@ -21,7 +21,7 @@
     <preference name="show-splash-screen-spinner" value="false" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="prerendered-icon" value="true" />
-    <preference name="exit-on-suspend" value="true" />
+    <preference name="exit-on-suspend" value="false" />
     
     <preference name="orientation" value="portrait" />
     

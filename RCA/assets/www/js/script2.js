@@ -22,8 +22,8 @@ $(function() {
 	   var unEl = iBody.find("#bt_add_photos")
 	   //console.log("unEl : " + unEl.attr('alt'))
 			    
-	   var id_post = iBody.find("article").attr('id')
-	   // console.log("id_post : " + id_post)
+	   var id_post = iBody.find("div[id^='post-']").attr('id')
+	   console.log("id_post : " + id_post)
 			    
 	   unEl.click(function() {
 		   getPhoto(pictureSource.PHOTOLIBRARY, id_post); //From Photo Library

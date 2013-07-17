@@ -64,8 +64,8 @@ $(function() {
 				if($(this).attr('class') == 'swipebox'){
 					return false;
 				}
-			}
-			showLoading()
+				
+				showLoading()
 			}
 		})
 				

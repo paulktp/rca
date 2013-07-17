@@ -62,7 +62,7 @@ $(function() {
 					return false;
 				}
 				if($(this).attr('class') == 'swipebox'){
-					return flase;
+					return false;
 				}
 			}
 			showLoading()

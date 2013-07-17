@@ -61,7 +61,11 @@ $(function() {
 					window.open($(this).attr('href'),'_system');
 					return false;
 				}
-				showLoading()
+				if($(this).attr('class') == 'swipebox'){
+					return flase;
+				}
+			}
+			showLoading()
 			}
 		})
 				

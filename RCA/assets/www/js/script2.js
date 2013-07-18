@@ -19,14 +19,19 @@ $(function() {
 		        
 	   $("#rcaframe").height($(window).height())
 
-	   var unEl = iBody.find("#bt_add_photos")
-	   //console.log("unEl : " + unEl.attr('alt'))
+	   var bt_add_photos = iBody.find("#bt_add_photos")
+	   var bt_add_videos = iBody.find("#bt_add_videos")
+	   
+	   //console.log("bt_add_photos : " + bt_add_photos.attr('alt'))
 			    
 	   var id_post = iBody.find("div[id^='post-']").attr('id')
 	   console.log("id_post : " + id_post)
 			    
-	   unEl.click(function() {
+	   bt_add_photos.click(function() {
 		   getPhoto(pictureSource.PHOTOLIBRARY, id_post); //From Photo Library
+	   });
+	   bt_add_videos.click(function() {
+		   getVideo(pictureSource.PHOTOLIBRARY, id_post);
 	   });
 	    	    
 	   //load menu

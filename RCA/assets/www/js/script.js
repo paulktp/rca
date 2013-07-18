@@ -32,6 +32,7 @@
              id_post = 0;
              f =  window.frames['rcaframe'];
              url_Upload = "http://cr-ca.ktp-concept.com/reception.php";
+             url_Upload_video = "http://cr-ca.ktp-concept.com/reception_video.php";
              
          } 
     }
@@ -65,7 +66,7 @@
     
     var id_post;		//the post id for media
     var f;				//iframe frame
-    var url_Upload;		//url to upload script   
+    var url_Upload, url_Upload_video;		//url to upload script   
 
     // Called when a photo is successfully retrieved
     //
@@ -91,11 +92,7 @@
     // Called when a photo is successfully retrieved
     //
     function onPhotoURISuccess(imageURI) {
-      // Uncomment to view the image file URI 
       console.log('imageURI : ' + imageURI);
-
-
-      //var largeImage = f.document.getElementById('smallImage');
       var button = f.document.getElementById('sendphoto');
             
       button.style.display = 'block';
@@ -105,6 +102,18 @@
      //largeImage.style.display = 'block';
       //largeImage.src = imageURI;
     }
+    
+    function onVideoURISuccess(URI) {
+        console.log('VideoURI : ' + URI);
+        var button = f.document.getElementById('sendvideo');
+              
+        button.style.display = 'block';
+        button.onclick = function() { uploadFile(URI) };
+        
+        // Show the captured photo
+       //largeImage.style.display = 'block';
+        //largeImage.src = imageURI;
+      }
 
     // A button will call this function
     //
@@ -131,11 +140,21 @@
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
+    
+    function getVideo(source,post_id) {
+    	id_post = post_id;
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onVideoURISuccess, onFail, { quality: 50, 
+        destinationType: destinationType.FILE_URI,
+        sourceType: source,
+        mediaType: Camera.MediaType.VIDEO });
+    }
 
     // Called if something bad happens.
     // 
     function onFail(message) {
-    	navigator.notification.alert('Failed because: ' + message);
+    	if(message != "Selection cancelled.")
+    		navigator.notification.alert('Failed because: ' + message);
     }
     
     
@@ -143,20 +162,36 @@
     //
     function uploadPhoto(imageURI) {
     	
-    	//console.log('imageURI : ' + imageURI);
+    	console.log('imageURI : ' + imageURI);
     	//console.log('id_post_' + id_post);
     	
     	var options = new FileUploadOptions();
-    	options.fileKey="file";
-    	options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-    	options.mimeType="image/jpeg";
+	    	options.fileKey="file";
+	    	options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+	    	options.mimeType="image/jpeg";
     	var params = new Object();
-    	params.id_post = id_post;
-    	//params.value2 = "param";
-    	options.params = params;
-    	options.chunkedMode = false;
+    		params.id_post = id_post;
+	    	options.params = params;
+	    	options.chunkedMode = false;
     	var ft = new FileTransfer();
-    	ft.upload(imageURI, url_Upload, win, fail, options);
+    		ft.upload(imageURI, url_Upload, win, fail, options);
+    }
+    
+    function uploadFile(URI) {
+    	
+    	console.log('URI : ' + URI);
+    	console.log('id_post_' + id_post);
+    	
+    	var options = new FileUploadOptions();
+	    	options.fileKey="file";
+	    	options.fileName=URI.substr(URI.lastIndexOf('/')+1);
+	    	options.mimeType="video/mp4";
+    	var params = new Object();
+	    	params.id_post = id_post;
+	    	options.params = params;
+	    	options.chunkedMode = true;
+    	var ft = new FileTransfer();
+    		ft.upload(URI, url_Upload_video, win, fail, options);
     }
     
     function win(r) {
@@ -169,13 +204,16 @@
     	var button = f.document.getElementById('sendphoto');   
         button.style.display = 'none';
         button.onclick = function() {};
+        var button = f.document.getElementById('sendvideo');   
+        button.style.display = 'none';
+        button.onclick = function() {};
         
-    	navigator.notification.alert("Media correctement envoye !",alertDismissed,"Confirmation");
+    	navigator.notification.alert("Media correctement envoye et soumis pour approbation.",alertDismissed,"Confirmation");
     }
     
     function fail(error) {
     	//alert("An error has occurred: Code = " = error.code);
     	//console.log("upload error source " + error.source);
         //console.log("upload error target " + error.target);
-        navigator.notification.alert("An error has occurred: Code = " + error.code);
+        navigator.notification.alert("Une erreur est survenue: Code = " + error.code);
     }

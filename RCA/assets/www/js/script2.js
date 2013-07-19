@@ -1,5 +1,6 @@
 var menu_html_rca = '';
 var iBody = ''; 
+var url_site = 'http://cr-ca.ktp-concept.com';
 	
 $(function() {
 		
@@ -39,16 +40,16 @@ $(function() {
 	   if(menu_html_rca == ''){
 		   iBody.find('.main-navigation').clone().appendTo('#right-panel');
 					
-		   $(".main-navigation a.ui-link").each(function(){
-			   if($(this).attr("href") == '/') $(this).attr("href","http://cr-ca.ktp-concept.com")
-			   if($(this).attr("title") == 'Mon Compte') $(this).attr("href","http://cr-ca.ktp-concept.com/wp-login.php");
+		   $(".main-navigation a").each(function(){
+			   if($(this).attr("href") == '/') $(this).attr("href",url_site)
+			   if($(this).attr("title") == 'Mon Compte') $(this).attr("href",url_site+""/wp-login.php");
 			   $(this).attr("target",'rcaframe');
 		   });
 					
 		   menu_html_rca = 'menu_ok';
 	   }
 	   
-	   $(".main-navigation a.ui-link").on("click",function(){
+	   $(".main-navigation a").on("click",function(){
 		   if($(this).parent('li').attr('id') == 'menu-item-808'){  //lyceo
 			   window.open($(this).attr('href'),'_system');
 			   return false;

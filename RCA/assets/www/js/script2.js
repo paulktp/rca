@@ -42,7 +42,7 @@ $(function() {
 					
 		   $(".main-navigation a").each(function(){
 			   if($(this).attr("href") == '/') $(this).attr("href",url_site)
-			   if($(this).attr("title") == 'Mon Compte') $(this).attr("href",url_site+""/wp-login.php");
+			   if($(this).attr("title") == 'Mon Compte') $(this).attr("href",url_site+"/wp-login.php");
 			   $(this).attr("target",'rcaframe');
 		   });
 					

@@ -9,10 +9,11 @@
     	// Now safe to use the Codova API
 
     	
+    	
     	var networkState = checkConnection();
-    	//navigator.notification.alert(networkState);
+
     	 if (networkState == Connection.NONE) {
-             //window.location="local/index.html";
+
     		 navigator.notification.alert('L\'application requiert une connexion internet.');
 
     		 $('#main-page').hide();
@@ -34,8 +35,14 @@
              url_Upload = "http://cr-ca.ktp-concept.com/reception.php";
              url_Upload_video = "http://cr-ca.ktp-concept.com/reception_video.php";
              
+             
+             //PUSH NOTIFICATION
+             //pushNotificationStart();
+             
+             
          } 
     }
+
     
     function alertDismissed(){
     	
@@ -66,7 +73,9 @@
     
     var id_post;		//the post id for media
     var f;				//iframe frame
-    var url_Upload, url_Upload_video;		//url to upload script   
+    var url_Upload, url_Upload_video;		//url to upload script  
+    
+    var pushNotification;
 
     // Called when a photo is successfully retrieved
     //
@@ -217,3 +226,105 @@
         //console.log("upload error target " + error.target);
         navigator.notification.alert("Une erreur est survenue: Code = " + error.code);
     }
+
+    
+    
+    /*******PUSH PLUGIN********/
+    
+    function pushNotificationStart()
+    {
+    	pushNotification = window.plugins.pushNotification;
+        //AIzaSyDgk_4ln4Upk3w_XXoPGo2w-qdf5-C3_tU
+        if (device.platform == 'android' || device.platform == 'Android') {
+       	    pushNotification.register(successHandler, errorHandler,{"senderID":"222157888865","ecb":"onNotificationGCM"});
+       	} else {
+       	    pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});
+       	}
+    }
+    
+    // result contains any message sent from the plugin call
+    function successHandler (result) {
+        alert('result = '+result)
+    }
+    
+    function tokenHandler (result) {
+        // Your iOS push server needs to know the token before it can push to this device
+        // here is where you might want to send it the token for later use.
+        alert('device token = '+result)
+    }
+    
+    // result contains any error description text returned from the plugin call
+    function errorHandler (error) {
+        alert('error = '+error)
+    }
+    
+    // iOS
+    function onNotificationAPN(event) {
+        if (event.alert) {
+            navigator.notification.alert(event.alert);
+        }
+
+        if (event.sound) {
+            var snd = new Media(event.sound);
+            snd.play();
+        }
+
+        if (event.badge) {
+            pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
+        }
+    }
+    
+    // Android
+    function onNotificationGCM(e) {
+        console.log('<li>EVENT -> RECEIVED:' + e.event + '</li>');
+
+        switch( e.event )
+        {
+            case 'registered':
+            if ( e.regid.length > 0 )
+            {
+            	console.log('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+                // Your GCM push server needs to know the regID before it can push to this device
+                // here is where you might want to send it the regID for later use.
+                console.log("regID = " + e.regID);
+            }
+            break;
+
+            case 'message':
+                // if this flag is set, this notification happened while we were in the foreground.
+                // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+                if (e.foreground)
+                {
+                	console.log('<li>--INLINE NOTIFICATION--' + '</li>');
+
+                    // if the notification contains a soundname, play it.
+                    var my_media = new Media("/android_asset/www/"+e.soundname);
+                    my_media.play();
+                }
+                else
+                {   // otherwise we were launched because the user touched a notification in the notification tray.
+                    if (e.coldstart)
+                    	console.log('<li>--COLDSTART NOTIFICATION--' + '</li>');
+                    else
+                    	console.log('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+                }
+
+                console.log('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+                console.log('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+            break;
+
+            case 'error':
+            	console.log('<li>ERROR -> MSG:' + e.msg + '</li>');
+            break;
+
+            default:
+            	console.log('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+            break;
+        }
+    }
+    
+    
+    
+    /*******PUSH PLUGIN********/
+    
+    

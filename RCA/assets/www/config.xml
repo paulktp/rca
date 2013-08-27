@@ -67,6 +67,6 @@
 	<gap:splash src="splash/winphone/splash.jpg" gap:platform="winphone" />
  -->	
 	
-	<gap:plugin name="com.adobe.plugins.pushplugin" version="1.3.3" />
+	<!-- <gap:plugin name="com.adobe.plugins.pushplugin" version="1.3.3" />-->
 
 </widget>

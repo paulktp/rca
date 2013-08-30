@@ -1,6 +1,5 @@
 var url_site = 'http://cr-ca.ktp-concept.com';
 
-
     // Wait for Cordova to connect with the device
     //
     document.addEventListener("deviceready",onDeviceReady,false);
@@ -39,7 +38,8 @@ var url_site = 'http://cr-ca.ktp-concept.com';
              
              
              //PUSH NOTIFICATION
-             //pushNotificationStart();
+
+             pushNotificationStart();
              
              
          } 
@@ -256,7 +256,7 @@ var url_site = 'http://cr-ca.ktp-concept.com';
     
     // result contains any message sent from the plugin call
     function successHandler (result) {
-        alert('result = '+result)
+        alert('success result = '+result)
     }
     
     function tokenHandler (result) {

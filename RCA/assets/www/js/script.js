@@ -1,3 +1,5 @@
+var url_site = 'http://cr-ca.ktp-concept.com';
+
 
     // Wait for Cordova to connect with the device
     //
@@ -32,8 +34,8 @@
              
              id_post = 0;
              f =  window.frames['rcaframe'];
-             url_Upload = "http://cr-ca.ktp-concept.com/reception.php";
-             url_Upload_video = "http://cr-ca.ktp-concept.com/reception_video.php";
+             url_Upload = url_site+"/reception.php";
+             url_Upload_video = url_site+"/reception_video.php";
              
              
              //PUSH NOTIFICATION
@@ -174,6 +176,9 @@
     	console.log('imageURI : ' + imageURI);
     	//console.log('id_post_' + id_post);
     	
+    	var loading = f.document.getElementById('loadingphoto'); 
+    	loading.style.display = 'block';
+    	
     	var options = new FileUploadOptions();
 	    	options.fileKey="file";
 	    	options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -189,7 +194,10 @@
     function uploadFile(URI) {
     	
     	console.log('URI : ' + URI);
-    	console.log('id_post_' + id_post);
+    	//console.log('id_post_' + id_post);
+    	
+    	var loading = f.document.getElementById('loadingvideo'); 
+    	loading.style.display = 'block';
     	
     	var options = new FileUploadOptions();
 	    	options.fileKey="file";
@@ -216,8 +224,12 @@
         var button = f.document.getElementById('sendvideo');   
         button.style.display = 'none';
         button.onclick = function() {};
+        var loading = f.document.getElementById('loadingphoto');   
+        loading.style.display = 'none';
+        var loading = f.document.getElementById('loadingvideo');   
+        loading.style.display = 'none';
         
-    	navigator.notification.alert("Media correctement envoye et soumis pour approbation.",alertDismissed,"Confirmation");
+    	navigator.notification.alert("Media correctement soumis et en attente de validation.",alertDismissed,"Confirmation");
     }
     
     function fail(error) {

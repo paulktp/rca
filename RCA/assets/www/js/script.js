@@ -39,7 +39,7 @@ var url_site = 'http://cr-ca.ktp-concept.com';
              
              //PUSH NOTIFICATION
 
-             pushNotificationStart();
+             //pushNotificationStart();
              
              
          } 

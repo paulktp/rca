@@ -63,11 +63,15 @@ $(function() {
 		iBody.find('a').click(function(){
 			var start_link = $(this).attr('href').substring(0,1);
 			if(start_link != '#' && start_link != ''){
+				
 				if($(this).attr('id') == 'lyceolink'){
 					window.open($(this).attr('href'),'_system');
 					return false;
 				}
 				if($(this).attr('class') == 'swipebox'){
+					return false;
+				}
+				if($(this).attr('class') == 'nivo-lightbox'){
 					return false;
 				}
 				

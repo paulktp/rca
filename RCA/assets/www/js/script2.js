@@ -68,13 +68,14 @@ $(function() {
 					window.open($(this).attr('href'),'_system');
 					return false;
 				}
-				if($(this).attr('class') != 'swipebox' &&
-				  ($(this).attr('class') != 'nivo-lightbox'){
-					showLoading()
+				if($(this).attr('class') == 'swipebox'){
+					return false;
 				}
-
+				if($(this).attr('class') == 'nivo-lightbox'){
+					return false;
+					}
 				
-				
+				showLoading()
 			}
 		})
 				

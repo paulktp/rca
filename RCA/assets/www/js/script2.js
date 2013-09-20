@@ -138,11 +138,11 @@ $(function() {
 	   $("#right-panel2").panel({
 			beforeclose: function( event, ui ) {
 				console.log('close #right-panel2');
-				//$('#to-right-panel').show();
+				$('#to-right-panel').show();
 			},
 			beforeopen: function( event, ui ) {
 				console.log('open #right-panel2');
-				//$('#to-right-panel').hide();
+				$('#to-right-panel').hide();
 			}
 		});
 				

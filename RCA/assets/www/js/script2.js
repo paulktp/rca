@@ -70,7 +70,7 @@ $(function() {
 			arp.attr('style','top:'+h +'px !important;right: -10px !important;');
 			arp.show();
 
-			if(menu_html_guide_aide == ''){
+			/*if(menu_html_guide_aide == ''){*/
 				iBody.find('.guideaidesopen').clone().appendTo('#right-panel2');
 				menu_html_guide_aide = 'menu_html_guide_aide_ok';
 				
@@ -108,9 +108,9 @@ $(function() {
 				});
 				
 				
-			}
+			/*}*/
 		}else{
-			
+			 $('#a_right-panel2').hide();
 		}
 	   
 	   

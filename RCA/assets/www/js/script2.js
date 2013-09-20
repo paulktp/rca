@@ -60,6 +60,7 @@ $(function() {
 	   
 	   
 	   /*load menu 2 if exists */
+	   /*
 		if (iBody.find('.guideaidesopen .nav_map_open').length) {
 			
 			var menu = iBody.find('#nav_map.guid .guid_open');
@@ -70,7 +71,7 @@ $(function() {
 			arp.attr('style','top:'+h +'px !important;right: -10px !important;');
 			arp.show();
 
-			/*if(menu_html_guide_aide == ''){*/
+
 				iBody.find('.guideaidesopen').clone().appendTo('#right-panel2');
 				menu_html_guide_aide = 'menu_html_guide_aide_ok';
 				
@@ -108,11 +109,11 @@ $(function() {
 				});
 				
 				
-			/*}*/
+			
 		}else{
 			 $('#a_right-panel2').hide();
 		}
-	   
+	   */
 	   
 		/* menu click */
 	   $(".main-navigation a").on("click",function(){

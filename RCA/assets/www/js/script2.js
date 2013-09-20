@@ -4,12 +4,15 @@ var iBody = '';
 	
 $(function() {
 		
+	
 	$('#rcaframe').ready(function () {
 		showLoading()
 	});
 
 	$('#rcaframe').load(function(){
         
+		$('#a_right-panel2').hide();
+		
        iBody = $("#rcaframe").contents().find("body");
 	       
 		       

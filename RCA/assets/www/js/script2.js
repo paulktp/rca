@@ -64,7 +64,7 @@ $(function() {
 			
 			var arp = $('#a_right-panel2');
 			var h = $(window).height()-arp.height();
-			arp.attr('style','top:'+h +'px !important;');
+			arp.attr('style','top:'+h +'px !important;right: -10px !important;');
 			arp.show();
 
 			if(menu_html_guide_aide == ''){

@@ -1,4 +1,5 @@
-var url_site = 'http://cr-ca.ktp-concept.com';
+
+var deviceVersion;
 
     // Wait for Cordova to connect with the device
     //
@@ -9,7 +10,9 @@ var url_site = 'http://cr-ca.ktp-concept.com';
     function onDeviceReady() {
     	// Now safe to use the Codova API
 
-    	
+    	deviceVersion = device.version;
+
+    	console.log(deviceVersion)
     	
     	var networkState = checkConnection();
 

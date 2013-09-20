@@ -9,6 +9,22 @@
 .ui-bar-c{
 	border : none;
 }
+
+#loadering{
+	display:none;
+	position:absolute;
+	left:10px;
+	top:20px;
+	opacity: 0.88;
+    padding: 10px;
+    background-color:#222222;
+    color:#fff;
+    width:200px;
+    z-index:999999;
+    border-radius: 0.6em 0.6em 0.6em 0.6em;
+    #background: linear-gradient(#444444, #222222) repeat scroll 0 0 #222222;
+    border: 1px solid #444444;
+}
 /* Adjust the width of the left reveal menu.
 Copy all CSS from jquery.mobile.panel.css and delete the properties other than width, left, right and transform.
 Then delete the selectors/rules for display modes (reveal/push/overlay) and the position (left/right) that you don't use.

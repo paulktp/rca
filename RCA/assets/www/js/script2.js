@@ -200,6 +200,7 @@ $(function() {
 							html: "Chargement en cours..."
 							});
 		}
+		$('#a_right-panel2').hide();
 	}
 		   
 	function hideLoading(){

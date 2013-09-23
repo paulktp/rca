@@ -47,7 +47,7 @@ $(function() {
 			   if(deviceVersion < '4.0.0'){
 				   var h = $(window).height();
 				   h = parseInt(h) + 20;
-				   $('#site-navigation').attr("style","position:relative;height:"+h+"px;margin-top: -20px;")
+				   $('#site-navigation').attr("style","position:relative;height:"+h+"px;margin-top: 0px;")
 			   }
 			   $(".main-navigation a").each(function(){
 				   if($(this).attr("href") == '/') $(this).attr("href",url_site)

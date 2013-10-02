@@ -161,7 +161,7 @@ $(function() {
 					window.open($(this).attr('href'),'_system');
 					return false;
 				}
-				if($(this).attr('class') == 'swipebox'){
+				if($(this).hasClass( "swipebox" )){
 					return false;
 				}
 				if($(this).attr('class') == 'nivo-lightbox'){

@@ -164,7 +164,7 @@ var deviceVersion;
     // Called if something bad happens.
     // 
     function onFail(message) {
-    	if(message != "Selection cancelled." || message != "no image selected")
+    	if(message != "Selection cancelled." && message != "no image selected")
     		navigator.notification.alert('Failed because: ' + message);
     }
     
